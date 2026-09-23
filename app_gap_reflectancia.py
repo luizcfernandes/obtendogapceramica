@@ -174,3 +174,9 @@ if arquivo_carregado is not None:
 # Adiciona um botão de reset
 if st.button("Resetar Tela / Limpar Dados", type="secondary"):
     st.rerun()
+
+# author
+st.write("")
+st.write("")
+st.write("Software desenvolvido by Luiz Carlos Fernandes")
+st.write("email: lzcsfs@gmail.com")
