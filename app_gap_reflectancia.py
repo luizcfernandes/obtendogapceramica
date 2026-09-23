@@ -6,6 +6,12 @@ import numpy as np
 
 # --- 🛠️ SEUS DOIS SCRIPTS ADAPTADOS ---
 
+# -- função que verifique o cabeçalho do navegador para ver se está sendo executado num celular ou num pc/note
+def ehCelular():
+    user_agent = st.context.header.get("User-Agent", "").lower()
+    dispositivos_moveis = ["android","iphone", "ipad","windows phone"]
+    return any(dispositivo in user_agent for dispositivo in dispositivos_moveis)
+  
 def exibirAnalisarCurva(arquivo_excel, co_column, ref_column,tipo_transicao_n):
     """
     Primeiro script: Lê o Excel e gera o gráfico inicial.
@@ -130,7 +136,12 @@ with col5:
      
 st.write("⚙️ Inserindo a planilha excel")
 # Step 1: Upload do arquivo .xlsx
-arquivo_carregado = st.file_uploader("Carregue seu arquivo Excel (.xlsx)", type=["xlsx"])
+
+if ehCelular():
+    st.warning("\U0001F4F1. Como está no celular use o formato .csv ao invés de planilhas grandes do excel")
+    arquivo_carregado = st.file_uploader("Escolha o arquivo CSV (.csv)", type=["scv"])
+else:
+    arquivo_carregado =  st.file_uploader("Carregue seu arquivo Excel (.xlsx)", type=["xlsx"])
 
 if arquivo_carregado is not None:
     st.success("Arquivo carregado com sucesso!")
