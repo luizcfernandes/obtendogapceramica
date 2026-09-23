@@ -139,7 +139,7 @@ st.write("⚙️ Inserindo a planilha excel")
 
 if ehCelular():
     st.warning("\U0001F4F1. Como está no celular use o formato .csv ao invés de planilhas grandes do excel")
-    arquivo_carregado = st.file_uploader("Escolha o arquivo CSV (.csv)", type=["scv"])
+    arquivo_carregado = st.file_uploader("Escolha o arquivo CSV (.csv)", type=["csv"])
 else:
     arquivo_carregado =  st.file_uploader("Carregue seu arquivo Excel (.xlsx)", type=["xlsx"])
 
