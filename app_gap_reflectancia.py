@@ -8,7 +8,7 @@ import numpy as np
 
 # -- função que verifique o cabeçalho do navegador para ver se está sendo executado num celular ou num pc/note
 def ehCelular():
-    user_agent = st.context.header.get("User-Agent", "").lower()
+    user_agent = st.context.headers.get("User-Agent", "").lower()
     dispositivos_moveis = ["android","iphone", "ipad","windows phone"]
     return any(dispositivo in user_agent for dispositivo in dispositivos_moveis)
   
