@@ -16,7 +16,10 @@ def exibirAnalisarCurva(arquivo_excel, co_column, ref_column,tipo_transicao_n):
     """
     Primeiro script: Lê o Excel e gera o gráfico inicial.
     """
-    df = pd.read_excel(arquivo_excel)
+    if ehCelular():
+        df = pd.read_csv(arquivo_excel)
+    else:
+        df = pd.read_excel(arquivo_excel)
     
     # Limpa espaços em branco dos nomes das colunas
     df.columns = df.columns.str.strip()
